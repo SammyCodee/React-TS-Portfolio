@@ -1,7 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Login } from "./components/login";
+import React from "react";
+
+const Login = React.lazy(() =>
+    import("./components/login").then(({ Login }) => ({ default: Login }))
+);
+
+const Main = React.lazy(() =>
+    import("./pages/main").then(({ Main }) => ({ default: Main }))
+);
 
 function App() {
     return (

@@ -1,6 +1,9 @@
-interface loginTypes {
+export interface loginTypes {
     username: string;
     password: string;
 }
 
-export default loginTypes;
+export interface user {
+    user: loginTypes,
+    isSuccess: boolean
+}

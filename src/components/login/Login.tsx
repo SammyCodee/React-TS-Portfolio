@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { login } from "../../redux/user/userSlice";
-import loginTypes from "./types";
+import {
+    tryLogin,
+    loginSuccess,
+    loginFailed,
+} from "../../redux/user/userSlice";
+import { user } from "./types";
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const getUsername = useAppSelector((state) => state.user.username);
-    const getPassword = useAppSelector((state) => state.user.password);
-
     const dispatch = useAppDispatch();
+
     const handleUsername = (data: React.ChangeEvent<HTMLInputElement>) => {
         data.preventDefault();
         setUsername(data.target.value);
@@ -21,11 +23,23 @@ const Login = () => {
         setPassword(data.target.value);
     };
 
+    const userPaylod: user = {
+        user: {
+            username: username,
+            password: password,
+        },
+        isSuccess: false,
+    };
     const handleSubmit = (
         data: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         data.preventDefault();
-        dispatch(login({ username, password }));
+        try {
+            dispatch(tryLogin(userPaylod));
+            dispatch(loginSuccess());
+        } catch (err) {
+            dispatch(loginFailed());
+        }
     };
 
     return (
@@ -53,9 +67,6 @@ const Login = () => {
 
                 <button onClick={(e) => handleSubmit(e)}>Submit</button>
             </form>
-
-            <span>Username: {getUsername}</span>
-            <span>Password: {getPassword}</span>
         </>
     );
 };
