@@ -7,6 +7,7 @@ import {
 } from "../../redux/user/userSlice";
 import { user } from "./types";
 import { InputField } from "../../components/inputField";
+import { BasicButton } from "../../components/basicButton";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -101,7 +102,15 @@ const Login = () => {
                             boxShadow: "unset",
                         }}
                     >
-                        <button onClick={(e) => handleSubmit(e)}>Submit</button>
+                        <BasicButton
+                            label={"Submit"}
+                            eventHandler={(
+                                e: React.MouseEvent<
+                                    HTMLButtonElement,
+                                    MouseEvent
+                                >
+                            ) => handleSubmit(e)}
+                        />
                     </Item>
                 </Stack>
             </Box>
