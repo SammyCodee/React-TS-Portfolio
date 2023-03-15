@@ -1,8 +1,9 @@
 import "./App.css";
-import React from "react";
+import React, { Suspense } from "react";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 
 const Login = React.lazy(() =>
-    import("./components/login").then(({ Login }) => ({ default: Login }))
+    import("./pages/login").then(({ Login }) => ({ default: Login }))
 );
 
 const Main = React.lazy(() =>
@@ -10,10 +11,11 @@ const Main = React.lazy(() =>
 );
 
 function App() {
+    const isSuccessLogin = useAppSelector((state) => state.user.isSuccess);
     return (
-        <div className="App">
-            <Login />
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+            <div className="App">{isSuccessLogin ? <Main /> : <Login />}</div>
+        </Suspense>
     );
 }
 
