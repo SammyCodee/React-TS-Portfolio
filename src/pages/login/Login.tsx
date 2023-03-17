@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
     tryLogin,
@@ -14,7 +14,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
-const Login = () => {
+const Login: FC = () => {
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
         ...theme.typography.body2,
@@ -27,7 +27,6 @@ const Login = () => {
         ...theme.typography.body1,
         fontFamily: "Rubik Iso",
         fontSize: 50,
-        // color: "#747bff",
         color: theme.palette.primary.main,
         padding: theme.spacing(2),
     }));
