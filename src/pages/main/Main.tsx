@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -8,6 +8,9 @@ import { getPosts } from "../../redux/posts/postsSlice";
 import Container from "@mui/material/Container";
 import style from "./Main.module.css";
 import BasicCard from "../../components/basicCard/BasicCard";
+import BasicSelect from "../../components/basicSelect/BasicSelect";
+import { booksData, moviesData } from "./utils";
+import { Book, Movie } from "../../components/basicSelect/types";
 
 const Main: FC = () => {
     const dispatch = useAppDispatch();
@@ -31,6 +34,9 @@ const Main: FC = () => {
         dispatch(getPosts());
     }, [dispatch]);
 
+    const [book, setBook] = useState<Book>(booksData[0]);
+    const [movie, setMovie] = useState<Movie>(moviesData[0]);
+
     return (
         <Container>
             <Box
@@ -47,6 +53,30 @@ const Main: FC = () => {
                 <Stack spacing={2}>
                     <Item>
                         <span>Password: {getPassword}</span>
+                    </Item>
+                </Stack>
+
+                <Stack spacing={2}>
+                    <Item>
+                        <BasicSelect
+                            values={booksData}
+                            onChange={(val) => setBook(val)}
+                            label={"Book List"}
+                            selected={book.id}
+                            required={true}
+                        />
+                    </Item>
+                </Stack>
+
+                <Stack spacing={2}>
+                    <Item>
+                        <BasicSelect
+                            values={moviesData}
+                            onChange={(val) => setMovie(val)}
+                            label={"Movie List"}
+                            selected={movie.id}
+                            required={false}
+                        />
                     </Item>
                 </Stack>
 
