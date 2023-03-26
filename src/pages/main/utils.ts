@@ -1,4 +1,4 @@
-import { Book, Movie } from "../../components/basicSelect/types";
+import { Book, Movie, Laptop } from "../../components/basicSelect/types";
 
 export const booksData: Book[] = [
     {
@@ -29,3 +29,18 @@ export const moviesData: Movie[] = [
       value: "Good_Omens_2019"
     }
   ];
+
+export const laptopsData: Laptop[] = [
+  {
+    id: "1",
+    model: "Orangebook Pro",
+    releaseDate: "2019",
+    value: "Orangebook_Pro"
+  },
+  {
+    id: "2",
+    model: "Orangebook Pro Extreme",
+    releaseDate: "2022",
+    value: "Orangebook_Pro_Extreme"
+  }
+];

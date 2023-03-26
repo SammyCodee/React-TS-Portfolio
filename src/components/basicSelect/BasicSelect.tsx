@@ -9,6 +9,7 @@ const BasicSelect = <TValue extends Base>({
     label,
     selected,
     required,
+    titleKey = "value",
 }: ISelectProps<TValue>) => {
     const handleChange = (e: SelectChangeEvent) => {
         const val = values.find((val) => val.id === e.target.value);
@@ -23,7 +24,7 @@ const BasicSelect = <TValue extends Base>({
                             key={`${data.value} - ${data.id}`}
                             value={data.id}
                         >
-                            {data.value}
+                            {`${data[titleKey]}`}
                         </MenuItem>
                     ))}
             </Select>

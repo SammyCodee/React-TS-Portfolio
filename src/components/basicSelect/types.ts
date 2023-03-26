@@ -4,6 +4,7 @@ export interface ISelectProps<TValue> {
     label: string;
     selected: string;
     required: boolean;
+    titleKey?: keyof TValue;
 }
 
 export interface Base {
@@ -24,3 +25,10 @@ export type Movie = {
     releaseDate: string;
     value: string;
 };
+
+export type Laptop = {
+    id: string;
+    value: string;
+    model: string;
+    releaseDate: string;
+}

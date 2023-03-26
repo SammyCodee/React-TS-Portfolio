@@ -9,8 +9,8 @@ import Container from "@mui/material/Container";
 import style from "./Main.module.css";
 import BasicCard from "../../components/basicCard/BasicCard";
 import BasicSelect from "../../components/basicSelect/BasicSelect";
-import { booksData, moviesData } from "./utils";
-import { Book, Movie } from "../../components/basicSelect/types";
+import { booksData, moviesData, laptopsData } from "./utils";
+import { Book, Movie, Laptop } from "../../components/basicSelect/types";
 
 const Main: FC = () => {
     const dispatch = useAppDispatch();
@@ -36,6 +36,7 @@ const Main: FC = () => {
 
     const [book, setBook] = useState<Book>(booksData[0]);
     const [movie, setMovie] = useState<Movie>(moviesData[0]);
+    const [laptop, setLaptop] = useState<Laptop>(laptopsData[0]);
 
     return (
         <Container>
@@ -76,6 +77,19 @@ const Main: FC = () => {
                             label={"Movie List"}
                             selected={movie.id}
                             required={false}
+                        />
+                    </Item>
+                </Stack>
+
+                <Stack spacing={2}>
+                    <Item>
+                        <BasicSelect
+                            values={laptopsData}
+                            onChange={(val) => setLaptop(val)}
+                            label={"Laptop List"}
+                            selected={laptop.id}
+                            required={false}
+                            titleKey={"model"}
                         />
                     </Item>
                 </Stack>
