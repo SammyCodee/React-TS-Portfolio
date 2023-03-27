@@ -9,22 +9,33 @@ const BasicSelect = <TValue extends Base>({
     label,
     selected,
     required,
-    titleKey = "value",
+    displayLabel,
 }: ISelectProps<TValue>) => {
+    //type guard
+    const getStringFromValue = <TValue extends Base>(value: TValue) => {
+        if (typeof value === "string") {
+            return value;
+        }
+        return value.id;
+    };
+
     const handleChange = (e: SelectChangeEvent) => {
-        const val = values.find((val) => val.id === e.target.value);
+        const val = values.find(
+            (val) => getStringFromValue(val) === e.target.value
+        );
         if (val) onChange(val);
     };
+
     return (
         <FormControl required={required}>
             <Select label={label} onChange={handleChange} value={selected}>
                 {values &&
                     values.map((data) => (
                         <MenuItem
-                            key={`${data.value} - ${data.id}`}
-                            value={data.id}
+                            key={getStringFromValue(data)}
+                            value={getStringFromValue(data)}
                         >
-                            {`${data[titleKey]}`}
+                            {displayLabel(data)}
                         </MenuItem>
                     ))}
             </Select>

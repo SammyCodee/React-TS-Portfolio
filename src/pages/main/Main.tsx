@@ -12,6 +12,10 @@ import BasicSelect from "../../components/basicSelect/BasicSelect";
 import { booksData, moviesData, laptopsData } from "./utils";
 import { Book, Movie, Laptop } from "../../components/basicSelect/types";
 
+const tabListData = ["Books", "Laptops", "Movies"] as const;
+type typeOfTabListData = typeof tabListData;
+type tabListType = typeOfTabListData[number]; //indexed access
+
 const Main: FC = () => {
     const dispatch = useAppDispatch();
 
@@ -38,6 +42,54 @@ const Main: FC = () => {
     const [movie, setMovie] = useState<Movie>(moviesData[0]);
     const [laptop, setLaptop] = useState<Laptop>(laptopsData[0]);
 
+    const [tab, setTab] = useState<tabListType>(tabListData[0]);
+
+    const getSelect = (tab: tabListType) => {
+        switch (tab) {
+            case "Books":
+                return (
+                    <BasicSelect<Book>
+                        values={booksData}
+                        onChange={(val) => setBook(val)}
+                        label={"Book List"}
+                        selected={book.id}
+                        required={true}
+                        displayLabel={(val) =>
+                            `${val.title} - ${val.author} - ${val.id}`
+                        }
+                    />
+                );
+            case "Laptops":
+                return (
+                    <BasicSelect<Laptop>
+                        values={laptopsData}
+                        onChange={(val) => setLaptop(val)}
+                        label={"Laptop List"}
+                        selected={laptop.id}
+                        required={false}
+                        displayLabel={(val) =>
+                            `${val.model} - ${val.releaseDate} - ${val.id}`
+                        }
+                    />
+                );
+            case "Movies":
+                return (
+                    <BasicSelect<Movie>
+                        values={moviesData}
+                        onChange={(val) => setMovie(val)}
+                        label={"Movie List"}
+                        selected={movie.id}
+                        required={false}
+                        displayLabel={(val) =>
+                            `${val.title} - ${val.releaseDate} - ${val.id}`
+                        }
+                    />
+                );
+        }
+    };
+
+    const selected = getSelect(tab);
+
     return (
         <Container>
             <Box
@@ -59,39 +111,19 @@ const Main: FC = () => {
 
                 <Stack spacing={2}>
                     <Item>
-                        <BasicSelect
-                            values={booksData}
-                            onChange={(val) => setBook(val)}
-                            label={"Book List"}
-                            selected={book.id}
+                        <BasicSelect<tabListType>
+                            values={tabListData}
+                            onChange={(val) => setTab(val)}
+                            label={"Category"}
+                            selected={tab}
                             required={true}
+                            displayLabel={(val) => `${val}`}
                         />
                     </Item>
                 </Stack>
 
                 <Stack spacing={2}>
-                    <Item>
-                        <BasicSelect
-                            values={moviesData}
-                            onChange={(val) => setMovie(val)}
-                            label={"Movie List"}
-                            selected={movie.id}
-                            required={false}
-                        />
-                    </Item>
-                </Stack>
-
-                <Stack spacing={2}>
-                    <Item>
-                        <BasicSelect
-                            values={laptopsData}
-                            onChange={(val) => setLaptop(val)}
-                            label={"Laptop List"}
-                            selected={laptop.id}
-                            required={false}
-                            titleKey={"model"}
-                        />
-                    </Item>
+                    <Item>{selected}</Item>
                 </Stack>
 
                 <Stack spacing={3}>

@@ -1,16 +1,16 @@
 export interface ISelectProps<TValue> {
-    values: TValue[];
+    values: Readonly<TValue[]>;
     onChange: (value: TValue) => void;
     label: string;
     selected: string;
     required: boolean;
-    titleKey?: keyof TValue;
+    displayLabel: (value: TValue) => string;
 }
 
-export interface Base {
+interface IBase {
     id: string;
-    value: string;
 }
+export type Base = IBase | string;
 
 export type Book = {
     id: string;
