@@ -44,3 +44,5 @@ export const laptopsData: Laptop[] = [
     value: "Orangebook_Pro_Extreme"
   }
 ];
+
+export const tabListData = ["Books", "Laptops", "Movies"] as const;

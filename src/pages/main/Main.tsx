@@ -9,12 +9,9 @@ import Container from "@mui/material/Container";
 import style from "./Main.module.css";
 import BasicCard from "../../components/basicCard/BasicCard";
 import BasicSelect from "../../components/basicSelect/BasicSelect";
-import { booksData, moviesData, laptopsData } from "./utils";
+import { booksData, moviesData, laptopsData, tabListData } from "./utils";
 import { Book, Movie, Laptop } from "../../components/basicSelect/types";
-
-const tabListData = ["Books", "Laptops", "Movies"] as const;
-type typeOfTabListData = typeof tabListData;
-type tabListType = typeOfTabListData[number]; //indexed access
+import { tabListType } from "./types";
 
 const Main: FC = () => {
     const dispatch = useAppDispatch();
