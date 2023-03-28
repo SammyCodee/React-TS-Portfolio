@@ -1,13 +1,13 @@
 import "./App.css";
 import React, { Suspense } from "react";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { useAppDispatch, useAppSelector } from "feature/redux/hooks";
 
 const Login = React.lazy(() =>
-    import("./pages/login").then(({ Login }) => ({ default: Login }))
+    import("pages/login").then(({ Login }) => ({ default: Login }))
 );
 
 const Main = React.lazy(() =>
-    import("./pages/main").then(({ Main }) => ({ default: Main }))
+    import("pages/main").then(({ Main }) => ({ default: Main }))
 );
 
 function App() {

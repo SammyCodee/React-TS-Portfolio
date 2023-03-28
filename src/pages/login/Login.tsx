@@ -1,13 +1,13 @@
 import React, { FC, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "feature/redux/hooks";
 import {
     tryLogin,
     loginSuccess,
     loginFailed,
-} from "../../redux/user/userSlice";
+} from "feature/redux/user/userSlice";
 import { user } from "./types";
-import { InputField } from "../../components/inputField";
-import { BasicButton } from "../../components/basicButton";
+import { InputField } from "components/inputField";
+import { BasicButton } from "components/basicButton";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";

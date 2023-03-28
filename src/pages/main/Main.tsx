@@ -1,16 +1,16 @@
 import React, { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "feature/redux/hooks";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { getPosts } from "../../redux/posts/postsSlice";
+import { getPosts } from "feature/redux/posts/postsSlice";
 import Container from "@mui/material/Container";
 import style from "./Main.module.css";
-import BasicCard from "../../components/basicCard/BasicCard";
-import BasicSelect from "../../components/basicSelect/BasicSelect";
+import BasicCard from "components/basicCard/BasicCard";
+import BasicSelect from "components/basicSelect/BasicSelect";
 import { booksData, moviesData, laptopsData, tabListData } from "./utils";
-import { Book, Movie, Laptop } from "../../components/basicSelect/types";
+import { Book, Movie, Laptop } from "components/basicSelect/types";
 import { tabListType } from "./types";
 
 const Main: FC = () => {
