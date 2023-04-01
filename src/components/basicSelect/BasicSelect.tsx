@@ -1,13 +1,14 @@
+import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import { ISelectProps, Base } from "./types";
 
 const BasicSelect = <TValue extends Base>({
-    values,
+    values = [],
     onChange,
-    label,
-    selected,
+    label = "",
+    selected = "",
     required,
     displayLabel,
 }: ISelectProps<TValue>) => {
@@ -26,6 +27,7 @@ const BasicSelect = <TValue extends Base>({
         if (val) onChange(val);
     };
 
+    console.log("basic select render invoked!");
     return (
         <FormControl required={required}>
             <Select label={label} onChange={handleChange} value={selected}>
@@ -43,4 +45,11 @@ const BasicSelect = <TValue extends Base>({
     );
 };
 
-export default BasicSelect;
+const MemoizedBasicSelect = React.memo(BasicSelect, (prevProps, nextProps) => {
+    if (prevProps.selected === nextProps.selected) {
+        return true;
+    }
+    return false;
+}) as typeof BasicSelect;
+
+export default MemoizedBasicSelect;

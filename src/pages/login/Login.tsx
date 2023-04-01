@@ -5,14 +5,18 @@ import {
     loginSuccess,
     loginFailed,
 } from "feature/redux/user/userSlice";
-import { user } from "./types";
-import { InputField } from "components/inputField";
-import { BasicButton } from "components/basicButton";
+
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
+
+import { user } from "./types";
+import { InputField } from "components/inputField";
+import { BasicButton } from "components/basicButton";
+
+const submitLabel = "Submit";
 
 const Login: FC = () => {
     const Item = styled(Paper)(({ theme }) => ({
@@ -51,6 +55,7 @@ const Login: FC = () => {
         },
         isSuccess: false,
     };
+
     const handleSubmit = (
         data: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
@@ -63,6 +68,7 @@ const Login: FC = () => {
         }
     };
 
+    console.log("login render!");
     return (
         <Container maxWidth="sm">
             <Box sx={{ width: "100%" }}>
@@ -96,21 +102,18 @@ const Login: FC = () => {
                         ) => handlePassword(e)}
                     />
 
-                    <Item
+                    {/* <Item
                         sx={{
                             boxShadow: "unset",
                         }}
-                    >
-                        <BasicButton
-                            label={"Submit"}
-                            eventHandler={(
-                                e: React.MouseEvent<
-                                    HTMLButtonElement,
-                                    MouseEvent
-                                >
-                            ) => handleSubmit(e)}
-                        />
-                    </Item>
+                    > */}
+                    <BasicButton
+                        label={submitLabel}
+                        eventHandler={(
+                            e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                        ) => handleSubmit(e)}
+                    />
+                    {/* </Item> */}
                 </Stack>
             </Box>
         </Container>

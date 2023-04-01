@@ -8,10 +8,13 @@ import { getPosts } from "feature/redux/posts/postsSlice";
 import Container from "@mui/material/Container";
 import style from "./Main.module.css";
 import BasicCard from "components/basicCard/BasicCard";
-import BasicSelect from "components/basicSelect/BasicSelect";
 import { booksData, moviesData, laptopsData, tabListData } from "./utils";
 import { Book, Movie, Laptop } from "components/basicSelect/types";
 import { tabListType } from "./types";
+import { BasicButton } from "components/basicButton";
+import { BasicSelect } from "components/basicSelect";
+
+const getPostLabel = "Get Post API";
 
 const Main: FC = () => {
     const dispatch = useAppDispatch();
@@ -30,10 +33,6 @@ const Main: FC = () => {
         textAlign: "center",
         color: theme.palette.text.secondary,
     }));
-
-    useEffect(() => {
-        dispatch(getPosts());
-    }, [dispatch]);
 
     const [book, setBook] = useState<Book>(booksData[0]);
     const [movie, setMovie] = useState<Movie>(moviesData[0]);
@@ -85,8 +84,9 @@ const Main: FC = () => {
         }
     };
 
-    const selected = getSelect(tab);
+    const selectedTab = getSelect(tab);
 
+    console.log("main render invoked!");
     return (
         <Container>
             <Box
@@ -106,22 +106,29 @@ const Main: FC = () => {
                     </Item>
                 </Stack>
 
-                <Stack spacing={2}>
-                    <Item>
-                        <BasicSelect<tabListType>
-                            values={tabListData}
-                            onChange={(val) => setTab(val)}
-                            label={"Category"}
-                            selected={tab}
-                            required={true}
-                            displayLabel={(val) => `${val}`}
-                        />
-                    </Item>
-                </Stack>
+                {/* <Stack spacing={2}>
+                    <Item> */}
+                <BasicButton
+                    label={getPostLabel}
+                    eventHandler={() => dispatch(getPosts())}
+                />
+                {/* </Item>
+                </Stack> */}
 
-                <Stack spacing={2}>
-                    <Item>{selected}</Item>
-                </Stack>
+                {/* <Stack spacing={2}>
+                    <Item> */}
+                <BasicSelect<tabListType>
+                    values={tabListData}
+                    onChange={(val) => setTab(val)}
+                    label={"Category"}
+                    selected={tab}
+                    required={true}
+                    displayLabel={(val) => `${val}`}
+                />
+                {/* </Item>
+                </Stack> */}
+
+                {selectedTab}
 
                 <Stack spacing={3}>
                     {loading ? (
