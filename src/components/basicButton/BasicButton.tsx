@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { BasicButtonTypes } from "./types";
+import { BasicButtonProps } from "./types";
 
-const BasicButton = ({ label, eventHandler }: BasicButtonTypes) => {
+const BasicButton = ({ label, eventHandler, ...props }: BasicButtonProps) => {
     console.log("button render!");
+    console.log('props: ', props)
     return (
         <Button onClick={eventHandler} color="primary">
             {label}
