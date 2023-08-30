@@ -1,10 +1,10 @@
-import {ComponentProps} from "react";
-import Button from "@mui/material/Button";
+import { type ComponentProps } from 'react'
+import type Button from '@mui/material/Button'
 
 interface BasicButtonTypes {
-    label: string;
-    eventHandler: React.MouseEventHandler<HTMLButtonElement>
-} 
+  label: string
+  eventHandler: React.MouseEventHandler<HTMLButtonElement>
+}
 
 /**
  * Get the props of a component from external library
