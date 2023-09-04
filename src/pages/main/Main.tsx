@@ -36,6 +36,7 @@ type Route = (typeof routes)[RouteKeys]
  * define, read, and test if the function does not rely on props
  *
  * Avoid create new instance every re-render
+ * Reference: https://medium.com/the-fours/writing-functions-outside-vs-inside-in-react-c9044ea31ee2
  */
 const goToRoute = (route: Route) => {
   console.log('routes: ', route)
