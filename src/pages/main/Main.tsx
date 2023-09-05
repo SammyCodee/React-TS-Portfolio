@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "feature/redux/hooks";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { getPosts } from "feature/redux/posts/postsSlice";
+import { getWeather } from "feature/redux/weather/weatherSlice";
 import Container from "@mui/material/Container";
 import style from "./Main.module.css";
 import BasicCard from "components/basicCard/BasicCard";
@@ -16,6 +17,8 @@ import { BasicSelect } from "components/basicSelect";
 
 const getPostLabel = "Get Post API";
 
+const getWeatherLabel = "Get Weather API";
+
 const Main: FC = () => {
     const dispatch = useAppDispatch();
 
@@ -23,7 +26,10 @@ const Main: FC = () => {
     const getUsername = user.username;
     const getPassword = user.password;
 
-    const { data, error, loading } = useAppSelector((state) => state.posts);
+    // const { data, error, loading } = useAppSelector((state) => state.posts);
+
+    const { data } = useAppSelector((state) => state.weather);
+    console.log("data", data);
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#66c5cd",
@@ -112,6 +118,11 @@ const Main: FC = () => {
                     label={getPostLabel}
                     eventHandler={() => dispatch(getPosts())}
                 />
+
+                <BasicButton
+                    label={getWeatherLabel}
+                    eventHandler={() => dispatch(getWeather())}
+                />
                 {/* </Item>
                 </Stack> */}
 
@@ -131,7 +142,7 @@ const Main: FC = () => {
                 {selectedTab}
 
                 <Stack spacing={3}>
-                    {loading ? (
+                    {/* {loading ? (
                         <div>LOADING...</div>
                     ) : (
                         data &&
@@ -147,10 +158,10 @@ const Main: FC = () => {
                                 </div>
                             );
                         })
-                    )}
+                    )} */}
                 </Stack>
             </Box>
-            {error && error}
+            {/* {error && error} */}
         </Container>
     );
 };
