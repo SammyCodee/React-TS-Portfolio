@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { type FC, useState } from 'react'
+import type { Book, Movie, Laptop } from 'components/basicSelect/types'
+import type { tabListType } from './types'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { useAppDispatch, useAppSelector } from 'feature/redux/hooks'
@@ -12,8 +15,6 @@ import Container from '@mui/material/Container'
 // import style from './Main.module.css'
 import BasicCard from 'components/basicCard/BasicCard'
 import { booksData, moviesData, laptopsData, tabListData } from './utils'
-import type { Book, Movie, Laptop } from 'components/basicSelect/types'
-import type { tabListType } from './types'
 import { BasicButton } from 'components/basicButton'
 import { BasicSelect } from 'components/basicSelect'
 import { getWeather } from 'feature/redux/weather/weatherSlice'
@@ -22,11 +23,13 @@ const getPostLabel = 'Get Post API'
 const goToAdmin = 'Admin'
 const goToHome = 'Home'
 const goToUsers = 'Users'
+const goToChapterOne = 'Chapter One'
 
 const routes = {
   home: '/home',
   admin: '/admin',
-  users: '/users'
+  users: '/users',
+  chapterOne: '/chapterOne'
 } as const
 
 type RouteKeys = keyof typeof routes // extract object's value
@@ -39,15 +42,17 @@ type Route = (typeof routes)[RouteKeys]
  * Avoid create new instance every re-render
  * Reference: https://medium.com/the-fours/writing-functions-outside-vs-inside-in-react-c9044ea31ee2
  */
-const goToRoute = (route: Route) => {
-  console.log('routes: ', route)
-}
 
 const getWeatherLabel = 'Get Weather API'
 
-const Main: FC = () => {
+const Main = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
+  const goToRoute = (route: Route) => {
+    console.log('routes: ', route)
+    navigate(route)
+  }
   const {
     user
     // isSuccess
@@ -220,6 +225,15 @@ const Main: FC = () => {
                     label={goToUsers}
                     eventHandler={() => {
                       goToRoute('/users')
+                    }}
+                />
+            </Box>
+
+            <Box sx={{ bgcolor: '#FF5733', height: '50vh' }}>
+            <BasicButton
+                    label={goToChapterOne}
+                    eventHandler={() => {
+                      goToRoute('/chapterOne')
                     }}
                 />
             </Box>

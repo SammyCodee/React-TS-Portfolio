@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { type FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   useAppDispatch
   // useAppSelector
@@ -23,6 +24,8 @@ import { BasicButton } from 'components/basicButton'
 const submitLabel = 'Submit'
 
 const Login: FC = () => {
+  const navigate = useNavigate()
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -67,6 +70,7 @@ const Login: FC = () => {
     try {
       dispatch(tryLogin(userPaylod))
       dispatch(loginSuccess())
+      navigate('/main')
     } catch (err) {
       dispatch(loginFailed())
     }
