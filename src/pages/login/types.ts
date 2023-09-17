@@ -4,6 +4,6 @@ export interface loginTypes {
 }
 
 export interface user {
-    user: loginTypes,
-    isSuccess: boolean
+    user: loginTypes;
+    isSuccess: boolean;
 }
