@@ -24,12 +24,20 @@ const goToAdmin = "Admin";
 const goToHome = "Home";
 const goToUsers = "Users";
 const goToChapterOne = "Chapter One";
+const goToChapterTwo = "Chapter Two";
+const goToChapterThree = "Chapter Three";
+const goToChapterFour = "Chapter Four";
+const goToChapterFive = "Chapter Five";
 
 const routes = {
     home: "/home",
     admin: "/admin",
     users: "/users",
     chapterOne: "/chapterOne",
+    chapterTwo: "/chapterTwo",
+    chapterThree: "/chapterThree",
+    chapterFour: "/chapterFour",
+    chapterFive: "/chapterFive",
 } as const;
 
 type RouteKeys = keyof typeof routes; // extract object's value
@@ -232,6 +240,20 @@ const Main = () => {
                     label={goToChapterOne}
                     eventHandler={() => {
                         goToRoute("/chapterOne");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToChapterTwo}
+                    eventHandler={() => {
+                        goToRoute("/chapterTwo");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToChapterThree}
+                    eventHandler={() => {
+                        goToRoute("/chapterThree");
                     }}
                 />
             </Box>
