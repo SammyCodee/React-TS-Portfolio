@@ -43,7 +43,15 @@ export default function UseMemoConcepts () {
     const magicNum = useMemo(() => calculateMagicNumber(count), [count])
     console.log('magicNum: ', magicNum)
     return(
+        /**
+         * reference: https://blog.logrocket.com/react-usememo-vs-usecallback/
+         */
         <div>
+            <h3>
+            On the other hand, in the trading example, we may not want to memoize results for a constantly changing order book.
+            <br/>
+            Keep in mind that using them comes with a cost (memory usage for caching).
+            </h3>
             <div>
                 Counter: {count} | Magic number: {magicNum} &nbsp;
                 <button onClick={increaseCounter}>+</button>
