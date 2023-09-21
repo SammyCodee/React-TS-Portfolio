@@ -23,6 +23,8 @@ const getPostLabel = "Get Post API";
 const goToAdmin = "Admin";
 const goToHome = "Home";
 const goToUsers = "Users";
+const goToUseCallbackConcepts = "UseCallback Concepts";
+const goToUseMemoConcepts = "UseMemo Concepts";
 const goToChapterOne = "Chapter One";
 const goToChapterTwo = "Chapter Two";
 const goToChapterThree = "Chapter Three";
@@ -33,6 +35,8 @@ const routes = {
     home: "/home",
     admin: "/admin",
     users: "/users",
+    useCallbackConcepts: "/useCallbackConcepts",
+    useMemoConcepts: "/useMemoConcepts",
     chapterOne: "/chapterOne",
     chapterTwo: "/chapterTwo",
     chapterThree: "/chapterThree",
@@ -231,6 +235,20 @@ const Main = () => {
                     label={goToUsers}
                     eventHandler={() => {
                         goToRoute("/users");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToUseCallbackConcepts}
+                    eventHandler={() => {
+                        goToRoute("/useCallbackConcepts");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToUseMemoConcepts}
+                    eventHandler={() => {
+                        goToRoute("/useMemoConcepts");
                     }}
                 />
             </Box>
