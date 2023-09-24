@@ -25,6 +25,7 @@ const goToHome = "Home";
 const goToUsers = "Users";
 const goToUseCallbackConcepts = "UseCallback Concepts";
 const goToUseMemoConcepts = "UseMemo Concepts";
+const goToCloneObjectExample = "Clone Object Example";
 const goToChapterOne = "Chapter One";
 const goToChapterTwo = "Chapter Two";
 const goToChapterThree = "Chapter Three";
@@ -37,6 +38,7 @@ const routes = {
     users: "/users",
     useCallbackConcepts: "/useCallbackConcepts",
     useMemoConcepts: "/useMemoConcepts",
+    cloneObjectExample: "/cloneObjectExample",
     chapterOne: "/chapterOne",
     chapterTwo: "/chapterTwo",
     chapterThree: "/chapterThree",
@@ -249,6 +251,13 @@ const Main = () => {
                     label={goToUseMemoConcepts}
                     eventHandler={() => {
                         goToRoute("/useMemoConcepts");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToCloneObjectExample}
+                    eventHandler={() => {
+                        goToRoute("/cloneObjectExample");
                     }}
                 />
             </Box>
