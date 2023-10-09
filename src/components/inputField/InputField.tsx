@@ -1,7 +1,11 @@
 import TextField from "@mui/material/TextField";
 import { InputFieldType } from "./types";
+import { forwardRef, ForwardedRef } from "react";
 
-const InputField = (props: InputFieldType) => {
+const InputFieldWithRef = (
+    props: InputFieldType,
+    ref?: ForwardedRef<HTMLInputElement>
+) => {
     const { label, type, required, value, eventHandler } = props;
     return (
         <TextField
@@ -12,8 +16,10 @@ const InputField = (props: InputFieldType) => {
             value={value}
             onChange={eventHandler}
             color="primary"
+            ref={ref}
         />
     );
 };
 
+const InputField = forwardRef(InputFieldWithRef);
 export default InputField;

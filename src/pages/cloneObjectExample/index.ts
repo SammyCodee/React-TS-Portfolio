@@ -1,1 +1,1 @@
-export { default as CloneObjectExample } from './cloneObjectExample'
+export { default as CloneObjectExample } from './CloneObjectExample'

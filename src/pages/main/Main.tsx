@@ -31,6 +31,7 @@ const goToChapterTwo = "Chapter Two";
 const goToChapterThree = "Chapter Three";
 const goToChapterFour = "Chapter Four";
 const goToChapterFive = "Chapter Five";
+const goToChapterNine = "Chapter Nine";
 
 const routes = {
     home: "/home",
@@ -44,9 +45,10 @@ const routes = {
     chapterThree: "/chapterThree",
     chapterFour: "/chapterFour",
     chapterFive: "/chapterFive",
+    chapterNine: "/chapterNine",
 } as const;
 
-type RouteKeys = keyof typeof routes; // extract object's value
+type RouteKeys = keyof typeof routes; // extract object's key value
 type Route = (typeof routes)[RouteKeys];
 
 /**
@@ -281,6 +283,13 @@ const Main = () => {
                     label={goToChapterThree}
                     eventHandler={() => {
                         goToRoute("/chapterThree");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToChapterNine}
+                    eventHandler={() => {
+                        goToRoute("/chapterNine");
                     }}
                 />
             </Box>

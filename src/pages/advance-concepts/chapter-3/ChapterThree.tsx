@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from "react";
 import Container from "@mui/material/Container";
 import styles from "./styles.module.css";
 
@@ -23,8 +22,12 @@ const ChapterThree = () => {
             <h1>Chapter 3: Configuration concerns with elements as props</h1>
             <h3>Key Takeaways:</h3>
             <ul>
-                {KeyTakeaways.map((data) => {
-                    return <li className={styles.li}> {data.item}</li>;
+                {KeyTakeaways.map((data, index) => {
+                    return (
+                        <li className={styles.li} key={`${data}-${index}`}>
+                            {data.item}
+                        </li>
+                    );
                 })}
             </ul>
         </Container>
