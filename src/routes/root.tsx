@@ -8,6 +8,7 @@ import { ChapterOne } from "pages/advance-concepts/chapter-1";
 import { ChapterThree } from "pages/advance-concepts/chapter-3";
 import { ChapterTwo } from "pages/advance-concepts/chapter-2";
 import { ChapterNine } from "pages/advance-concepts/chapter-9";
+import { ChapterEleven } from "pages/advance-concepts/chapter-11";
 import { UseMemoConcepts } from "pages/useMemo-concepts";
 import { CloneObjectExample } from "pages/cloneObjectExample";
 
@@ -29,6 +30,7 @@ const RootRoute = () => {
             <Route path="/chapterTwo" element={<ChapterTwo />} />
             <Route path="/chapterThree" element={<ChapterThree />} />
             <Route path="/chapterNine" element={<ChapterNine />} />
+            <Route path="/chapterEleven" element={<ChapterEleven />} />
         </Routes>
     );
 };

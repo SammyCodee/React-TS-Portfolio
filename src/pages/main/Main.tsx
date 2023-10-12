@@ -26,12 +26,13 @@ const goToUsers = "Users";
 const goToUseCallbackConcepts = "UseCallback Concepts";
 const goToUseMemoConcepts = "UseMemo Concepts";
 const goToCloneObjectExample = "Clone Object Example";
-const goToChapterOne = "Chapter One";
-const goToChapterTwo = "Chapter Two";
-const goToChapterThree = "Chapter Three";
-const goToChapterFour = "Chapter Four";
-const goToChapterFive = "Chapter Five";
-const goToChapterNine = "Chapter Nine";
+const goToChapterOne = "Chapter 1";
+const goToChapterTwo = "Chapter 2";
+const goToChapterThree = "Chapter 3";
+const goToChapterFour = "Chapter 4";
+const goToChapterFive = "Chapter 5";
+const goToChapterNine = "Chapter 9";
+const goToChapterEleven = "Chapter 11";
 
 const routes = {
     home: "/home",
@@ -46,6 +47,7 @@ const routes = {
     chapterFour: "/chapterFour",
     chapterFive: "/chapterFive",
     chapterNine: "/chapterNine",
+    chapterEleven: "/chapterEleven",
 } as const;
 
 type RouteKeys = keyof typeof routes; // extract object's key value
@@ -290,6 +292,13 @@ const Main = () => {
                     label={goToChapterNine}
                     eventHandler={() => {
                         goToRoute("/chapterNine");
+                    }}
+                />
+
+                <BasicButton
+                    label={goToChapterEleven}
+                    eventHandler={() => {
+                        goToRoute("/chapterEleven");
                     }}
                 />
             </Box>

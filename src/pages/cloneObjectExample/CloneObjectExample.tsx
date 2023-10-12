@@ -22,8 +22,8 @@ const CloneObjectExample = () => {
     obj.c.d = 200;
 
     console.log("obj:", obj); // {a:1,b:2,c:{d:200}}
-    console.log("shallowClone_spreadOperator", shallowClone_spreadOperator);
-    console.log("shallowClone_objectAssign", shallowClone_objectAssign);
+    console.log("shallowClone_spreadOperator", shallowClone_spreadOperator); // {a:1,b:2,c:{d:200}}
+    console.log("shallowClone_objectAssign", shallowClone_objectAssign); // {a:1,b:2,c:{d:200}}
     console.log("deepClone_JSON: ", deepClone_JSON); // {a:1,b:2,c:{d:1}}
 
     return (
