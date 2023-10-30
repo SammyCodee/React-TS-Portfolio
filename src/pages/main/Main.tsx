@@ -18,6 +18,10 @@ import { booksData, moviesData, laptopsData, tabListData } from "./utils";
 import { BasicButton } from "components/basicButton";
 import { BasicSelect } from "components/basicSelect";
 import { getWeather } from "feature/redux/weather/weatherSlice";
+/**
+ *  test the type extension
+ */
+import { allCats } from "pages/typeExtension/TypeExtension";
 
 const getPostLabel = "Get Post API";
 const goToAdmin = "Admin";
@@ -64,6 +68,7 @@ type Route = (typeof routes)[RouteKeys];
 const getWeatherLabel = "Get Weather API";
 
 const Main = () => {
+    console.log("merge cats: ", allCats);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
