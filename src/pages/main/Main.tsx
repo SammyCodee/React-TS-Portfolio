@@ -21,9 +21,9 @@ import { getWeather } from "feature/redux/weather/weatherSlice";
 /**
  *  test the type extension
  */
-import { allCats } from "pages/typescriptUitlity/TypeExtension";
-import { cat1 } from "pages/typescriptUitlity/NonEmptyString";
-import IsKeyword from "pages/typescriptUitlity/isKeyword";
+import { allCats } from "pages/typescriptUtility/TypeExtension";
+import { cat1 } from "pages/typescriptUtility/NonEmptyString";
+import IsKeyword from "pages/typescriptUtility/isKeyword";
 
 const getPostLabel = "Get Post API";
 const goToAdmin = "Admin";
