@@ -21,7 +21,9 @@ import { getWeather } from "feature/redux/weather/weatherSlice";
 /**
  *  test the type extension
  */
-import { allCats } from "pages/typeExtension/TypeExtension";
+import { allCats } from "pages/typescriptUitlity/TypeExtension";
+import { cat1 } from "pages/typescriptUitlity/NonEmptyString";
+import IsKeyword from "pages/typescriptUitlity/isKeyword";
 
 const getPostLabel = "Get Post API";
 const goToAdmin = "Admin";
@@ -69,6 +71,7 @@ const getWeatherLabel = "Get Weather API";
 
 const Main = () => {
     console.log("merge cats: ", allCats);
+    console.log("empty string utility: ", cat1);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -306,6 +309,13 @@ const Main = () => {
                         goToRoute("/chapterEleven");
                     }}
                 />
+            </Box>
+            <Box
+                sx={{
+                    backgroundColor: "purple",
+                }}
+            >
+                <IsKeyword />
             </Box>
         </Container>
     );
