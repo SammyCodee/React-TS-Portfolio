@@ -1,0 +1,11 @@
+
+/*
+* provides VS CODE autocomplete
+*/
+{
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
